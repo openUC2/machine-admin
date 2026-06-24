@@ -11,7 +11,7 @@ functionalities needed by customers who operate openUC2 instruments, such as:
 - Wi-Fi network connection management (which relies on NetworkManager)
 - Toggling remote assistance (which relies on Tailscale)
 - Managing removable storage drives (which relies on UDisks2)
-- (TODO) Shutdown and reboot (which relies on systemd)
+- Shutdown and reboot (which relies on systemd)
 - (TODO) Software updates (which uses Forklift)
 
 It is meant to be served from a reverse-proxy on port 80 along with all other network
