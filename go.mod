@@ -1,6 +1,6 @@
 module github.com/openUC2/machine-admin
 
-go 1.26.5
+go 1.26.6
 
 require (
 	filippo.io/csrf v0.2.1
@@ -16,11 +16,11 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/sargassum-world/godest v0.7.3
 	github.com/unrolled/secure v1.17.0
-	github.com/urfave/cli/v3 v3.10.1
+	github.com/urfave/cli/v3 v3.11.0
 	github.com/varlink/go v0.4.0
 	golang.org/x/sync v0.22.0
 	gopkg.in/yaml.v3 v3.0.1
-	tailscale.com v1.102.0
+	tailscale.com v1.102.3
 )
 
 require (
