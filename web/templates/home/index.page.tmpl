@@ -242,6 +242,27 @@
             {{end}}
           </tbody>
         </table>
+        {{range $msg := .Data.ForkliftVersioning.Errors}}
+          <article class="message is-error card-width is-block">
+            <div class="message-body">
+              {{$msg}}
+            </div>
+          </article>
+        {{end}}
+        {{range $msg := .Data.ForkliftVersioning.Warnings}}
+          <article class="message is-warning card-width is-block">
+            <div class="message-body">
+              {{$msg}}
+            </div>
+          </article>
+        {{end}}
+        {{range $msg := .Data.ForkliftVersioning.Info}}
+          <article class="message is-info card-width is-block">
+            <div class="message-body">
+              {{$msg}}
+            </div>
+          </article>
+        {{end}}
       </turbo-frame>
 
       <h2>Boot</h2>

@@ -28,15 +28,52 @@ func NewClient(c Config, l godest.Logger) *Client {
 }
 
 type Forklift struct {
-	Forklift      string `yaml:"forklift,omitempty"`
-	Factory       string `yaml:"factory,omitempty"`
-	Current       string `yaml:"current,omitempty"`
-	Previous      string `yaml:"previous,omitempty"`
-	Pending       string `yaml:"pending,omitempty"`
-	Pallet        string `yaml:"pallet,omitempty"`
-	Changes       string `yaml:"changes,omitempty"`
-	UpgradeSource string `yaml:"upgrade-source,omitempty"`
-	Upgrade       string `yaml:"upgrade,omitempty"`
+	Forklift      string   `yaml:"forklift,omitempty"`
+	Factory       string   `yaml:"factory,omitempty"`
+	Current       string   `yaml:"current,omitempty"`
+	Previous      string   `yaml:"previous,omitempty"`
+	Pending       string   `yaml:"pending,omitempty"`
+	Pallet        string   `yaml:"pallet,omitempty"`
+	Changes       string   `yaml:"changes,omitempty"`
+	UpgradeSource string   `yaml:"upgrade-source,omitempty"`
+	Upgrade       string   `yaml:"upgrade,omitempty"`
+	Errors        []string `yaml:"errors,omitempty"`
+	Warnings      []string `yaml:"warnings,omitempty"`
+	Info          []string `yaml:"info,omitempty"`
+}
+
+func (f Forklift) IsZero() bool {
+	if f.Forklift != "" {
+		return false
+	}
+	if f.Factory != "" {
+		return false
+	}
+	if f.Current != "" {
+		return false
+	}
+	if f.Previous != "" {
+		return false
+	}
+	if f.Pending != "" {
+		return false
+	}
+	if f.Pallet != "" {
+		return false
+	}
+	if f.Changes != "" {
+		return false
+	}
+	if f.UpgradeSource != "" {
+		return false
+	}
+	if f.Upgrade != "" {
+		return false
+	}
+	if len(f.Errors)+len(f.Warnings)+len(f.Info) > 0 {
+		return false
+	}
+	return true
 }
 
 func (c *Client) GetForklift() (f Forklift, err error) {
