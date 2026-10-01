@@ -118,7 +118,7 @@ func (h *Handlers) HandleHomePub() turbostreams.HandlerFunc {
 			if err != nil {
 				return false, err
 			}
-			if vd.ForkliftVersioning == (versioning.Forklift{}) {
+			if vd.ForkliftVersioning.IsZero() {
 				return false, nil // don't output empty info if there was a read-write race condition!
 			}
 			// Produce output
