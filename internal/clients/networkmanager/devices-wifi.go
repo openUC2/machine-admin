@@ -1,3 +1,4 @@
+//nolint:goconst // many constants here are taken from the NetworkManager docs
 package networkmanager
 
 import (
@@ -24,26 +25,26 @@ type DeviceWifiMode uint32
 var deviceWifiModeInfo = map[DeviceWifiMode]EnumInfo{
 	0: {
 		Short: "unknown",
-		Level: "warning",
+		Level: EnumInfoLevelWarning,
 	},
 	1: {
 		Short:   "ad-hoc",
 		Details: "part of an Ad-Hoc 802.11 network without a central coordinating access point",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	2: {
 		Short: "infrastructure",
-		Level: "success",
+		Level: EnumInfoLevelSuccess,
 	},
 	3: {
 		Short:   "hotspot",
 		Details: "this device is acting as an access point/hotspot",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	4: {
 		Short:   "mesh",
 		Details: "802.11s mesh point",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 }
 

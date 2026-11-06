@@ -1,3 +1,4 @@
+//nolint:goconst // many constants here are taken from the NetworkManager docs
 package networkmanager
 
 import (
