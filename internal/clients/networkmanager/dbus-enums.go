@@ -12,7 +12,12 @@ type EnumInfo struct {
 	Level   string
 }
 
-const EnumInfoLevelError = "error"
+const (
+	EnumInfoLevelError   = "error"
+	EnumInfoLevelWarning = "warning"
+	EnumInfoLevelInfo    = "info"
+	EnumInfoLevelSuccess = "success"
+)
 
 // EnumSet
 

@@ -105,39 +105,45 @@ const turboDriveStyle = `.turbo-progress-bar {
 }
 `
 
+const (
+	cspNone         = "'none'"
+	cspSelf         = "'self'"
+	cspUnsafeInline = "'unsafe-inline'"
+)
+
 func (s *Server) configureHeaders(e *echo.Echo) error {
 	cspBuilder := cspbuilder.Builder{
 		Directives: map[string][]string{
-			cspbuilder.DefaultSrc: {"'self'"},
+			cspbuilder.DefaultSrc: {cspSelf},
 			// Note: the following is needed for the Tailscale web GUI to check device status (but the GUI
 			// still works without this permission, it just doesn't report device status):
 			cspbuilder.ConnectSrc: {"*"},
 			// Note: script-src "unsafe-inline" (which is ignored if we provide one or more hashes for
 			// CSP) is needed by the Tailscale web GUI:
-			cspbuilder.ScriptSrc: {"'self'", "'unsafe-inline'"},
+			cspbuilder.ScriptSrc: {cspSelf, cspUnsafeInline},
 			// cspbuilder.ScriptSrc: append(
 			// 	// Warning: script-src 'self' may not be safe to use if we're hosting user-uploaded content.
 			// 	// Then we'll need to provide hashes for scripts & styles we include by URL, and we'll need
 			// 	// to add the SRI integrity attribute to the tags including those files; however, it's
 			// 	// unclear how well-supported they are by browsers.
-			// 	[]string{"'self'", "'unsafe-inline'"},
+			// 	[]string{cspSelf, cspUnsafeInline},
 			// 	s.Inlines.ComputeJSHashesForCSP()...,
 			// ),
 			cspbuilder.StyleSrc: append(
 				[]string{
-					"'self'",
-					"'unsafe-inline'",
+					cspSelf,
+					cspUnsafeInline,
 					godest.ComputeCSPHash([]byte(turboDriveStyle)),
 				},
 				s.Inlines.ComputeCSSHashesForCSP()...,
 			),
-			cspbuilder.ObjectSrc: {"'none'"},
-			cspbuilder.ChildSrc:  {"'self'"},
+			cspbuilder.ObjectSrc: {cspNone},
+			cspbuilder.ChildSrc:  {cspSelf},
 			// Note: img-src with scheme "data:" is needed by the Tailscale web GUI:
 			cspbuilder.ImgSrc:         {"*", "data:"},
-			cspbuilder.BaseURI:        {"'none'"},
-			cspbuilder.FormAction:     {"'self'"},
-			cspbuilder.FrameAncestors: {"'self'"},
+			cspbuilder.BaseURI:        {cspNone},
+			cspbuilder.FormAction:     {cspSelf},
+			cspbuilder.FrameAncestors: {cspSelf},
 			// TODO: add HTTPS-related settings for CSP, including upgrade-insecure-requests
 		},
 	}
