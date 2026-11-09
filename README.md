@@ -114,6 +114,14 @@ TEMPLATES_PATH=custom-templates ./machine-admin server
 TEMPLATES_PATH=custom-templates make run-server
 ```
 
+Note that running `make runlive` will cause your `TEMPLATES_PATH` environment variable to be ignored, so that the templates directory at `web/templates` (relative to the root of this repository) is always used.
+
+You can also provide multiple directories delimited by colons, for example:
+```bash
+TEMPLATES_PATH=~/.local/share/machine-admin/template-overrides:custom-templates ./machine-admin server
+```
+Then the directories will be overlaid (like in Linux overlay filesystems) from left to right, with the leftmost directory on top.
+
 #### HTTP Server
 
 You can override the default port (`3001`) or base path (`/`) of the HTTP server with the `HTTP_PORT` and `HTTP_BASEPATH` environment variables, respectively. For example, you could run the web server on port 3002 with base path `/admin/panel/` by running the following command:
