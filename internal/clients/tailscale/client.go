@@ -78,9 +78,7 @@ func (c *Client) Provision(ctx context.Context, deviceAuthKey string) error {
 
 func (c *Client) Deprovision(ctx context.Context) error {
 	_, err := c.ts.EditPrefs(ctx, &ipn.MaskedPrefs{
-		Prefs: ipn.Prefs{
-			WantRunning: false,
-		},
+		WantRunning:    false,
 		WantRunningSet: true,
 	})
 	return err
@@ -88,9 +86,7 @@ func (c *Client) Deprovision(ctx context.Context) error {
 
 func (c *Client) Reprovision(ctx context.Context) error {
 	_, err := c.ts.EditPrefs(ctx, &ipn.MaskedPrefs{
-		Prefs: ipn.Prefs{
-			WantRunning: true,
-		},
+		WantRunning:    true,
 		WantRunningSet: true,
 	})
 	return err
