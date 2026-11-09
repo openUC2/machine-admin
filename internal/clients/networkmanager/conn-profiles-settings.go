@@ -1,3 +1,4 @@
+//nolint:goconst // many constants here are taken from the NetworkManager docs
 package networkmanager
 
 import (
@@ -335,6 +336,9 @@ func dumpConnProfileSettingsIPv4(
 	rawLinkLocal, err := ensureVar(rawSettings, "link-local", "", false, 0)
 	if err != nil {
 		return s, err
+	}
+	if rawLinkLocal > math.MaxInt32 || rawLinkLocal < math.MinInt32 {
+		return s, errors.Errorf("link-local %d would overflow int32", rawLinkLocal)
 	}
 	s.LinkLocal = ConnProfileSettingsIPv4LinkLocal(rawLinkLocal)
 	rawMethod, err := ensureVar(rawSettings, "method", "", true, "")

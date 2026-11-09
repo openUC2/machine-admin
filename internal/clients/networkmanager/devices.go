@@ -1,3 +1,4 @@
+//nolint:goconst // many constants here are taken from the NetworkManager docs
 package networkmanager
 
 import (
@@ -71,57 +72,57 @@ var deviceStateInfo = map[DeviceState]EnumInfo{
 	10: {
 		Short:   "unmanaged",
 		Details: "recognized, but not managed",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	20: {
 		Short:   "unavailable",
 		Details: "managed, but not available for use",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	30: {
 		Short:   "disconnected",
 		Details: "can be activated, but currently idle",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	40: {
 		Short:   "prepare",
 		Details: "preparing connection",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	50: {
 		Short:   "config",
 		Details: "connecting",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	60: {
 		Short:   "need auth",
 		Details: "more information needed to connect",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	70: {
 		Short:   "IP config",
 		Details: "requesting IP addresses and routing information",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	80: {
 		Short:   "IP check",
 		Details: "checking whether more action is needed",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	90: {
 		Short:   "secondaries",
 		Details: "waiting for activation of secondary connection",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	100: {
 		Short:   "activated",
 		Details: "has a network connection",
-		Level:   "success",
+		Level:   EnumInfoLevelSuccess,
 	},
 	110: {
 		Short:   "deactivating",
 		Details: "cleaning up resources to disconnect from current connection",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	120: {
 		Short:   "failed",
@@ -462,22 +463,22 @@ var deviceTypeInfo = map[DeviceType]EnumInfo{
 	0: {
 		Short:   "unknown",
 		Details: "unknown device",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	14: {
 		Short:   "generic",
 		Details: "generic support for unrecognized device types",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	1: {
 		Short:   "ethernet",
 		Details: "wired ethernet device",
-		Level:   "success",
+		Level:   EnumInfoLevelSuccess,
 	},
 	2: {
 		Short:   "wifi",
 		Details: "802.11 Wi-Fi device",
-		Level:   "success",
+		Level:   EnumInfoLevelSuccess,
 	},
 	3: {
 		Short:   "unused 1",
@@ -492,147 +493,147 @@ var deviceTypeInfo = map[DeviceType]EnumInfo{
 	5: {
 		Short:   "bluetooth",
 		Details: "Bluetooth device supporting PAN or DUN access protocols",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	6: {
 		Short:   "olpc mesh",
 		Details: "OLPC XO mesh networking device",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	7: {
 		Short:   "wimax",
 		Details: "802.16e Mobile WiMAX broadband device",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	8: {
 		Short:   "modem",
 		Details: "modem supporting analog telephone, CDMA/EVDO, GSM/UMTS, or LTE protocols",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	9: {
 		Short:   "infiniband",
 		Details: "IP-over-InfiniBand device",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	10: {
 		Short:   "bond",
 		Details: "bond controller interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	11: {
 		Short:   "vlan",
 		Details: "802.1Q VLAN interfface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	12: {
 		Short:   "adsl",
 		Details: "ADSL modem",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	13: {
 		Short:   "bridge",
 		Details: "bridge controller interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	15: {
 		Short:   "team",
 		Details: "802.1Q VLAN interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	16: {
 		Short:   "tun",
 		Details: "TUN or TAP interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	17: {
 		Short:   "ip tunnel",
 		Details: "IP tunnel interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	18: {
 		Short:   "macvlan",
 		Details: "MACVLAN interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	19: {
 		Short:   "vxlan",
 		Details: "VXLAN interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	20: {
 		Short:   "veth",
 		Details: "VETH interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	21: {
 		Short:   "macsec",
 		Details: "MACsec interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	22: {
 		Short:   "dummy",
 		Details: "dummy interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	23: {
 		Short:   "ppp",
 		Details: "PPP interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	24: {
 		Short:   "ovs",
 		Details: "Open vSwitch interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	25: {
 		Short:   "ovs port",
 		Details: "Open vSwitch port",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	26: {
 		Short:   "ovs bridge",
 		Details: "Open vSwitch bridge",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	27: {
 		Short:   "wpan",
 		Details: "IEEE 802.15.4 (WPAN) MAC Layer device",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	28: {
 		Short:   "6lowpan",
 		Details: "6LoWPAN interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	29: {
 		Short:   "wireguard",
 		Details: "WireGuard interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	30: {
 		Short:   "wifi p2p",
 		Details: "802.11 Wi-Fi P2P device",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	31: {
 		Short:   "vrf",
 		Details: "VRF (Virtual Routing and Forwarding) interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	32: {
 		Short:   "loopback",
 		Details: "loopback interface",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	33: {
 		Short:   "hsr",
 		Details: "HSR/PRP device",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	34: {
 		Short:   "ipvlan",
 		Details: "IPVLAN device",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 }
 
@@ -654,27 +655,27 @@ var deviceConnectivityStateInfo = map[IPConnectivityState]EnumInfo{
 	0: {
 		Short:   "unknown",
 		Details: "connectivity checks disabled or not run yet; internet might be available",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	1: {
 		Short:   "none",
 		Details: "network connection unavailable, no default route to the internet",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	2: {
 		Short:   "captive portal",
 		Details: "blocked by a captive portal",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	3: {
 		Short:   "limited",
 		Details: "connected to network without full internet access",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	4: {
 		Short:   "full",
 		Details: "connected to network with full internet access",
-		Level:   "success",
+		Level:   EnumInfoLevelSuccess,
 	},
 }
 
