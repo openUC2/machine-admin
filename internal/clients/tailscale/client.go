@@ -78,9 +78,7 @@ func (c *Client) Provision(ctx context.Context, deviceAuthKey string) error {
 
 func (c *Client) Deprovision(ctx context.Context) error {
 	_, err := c.ts.EditPrefs(ctx, &ipn.MaskedPrefs{
-		Prefs: ipn.Prefs{
-			WantRunning: false,
-		},
+		WantRunning:    false,
 		WantRunningSet: true,
 	})
 	return err
@@ -88,9 +86,7 @@ func (c *Client) Deprovision(ctx context.Context) error {
 
 func (c *Client) Reprovision(ctx context.Context) error {
 	_, err := c.ts.EditPrefs(ctx, &ipn.MaskedPrefs{
-		Prefs: ipn.Prefs{
-			WantRunning: true,
-		},
+		WantRunning:    true,
 		WantRunningSet: true,
 	})
 	return err
@@ -107,34 +103,34 @@ type State string
 var stateInfo = map[State]EnumInfo{
 	"NoState": {
 		Short: "none",
-		Level: "error",
+		Level: EnumInfoLevelError,
 	},
 	"InUseOtherUser": {
 		Short:   "other user",
 		Details: "already in use by another user",
-		Level:   "error",
+		Level:   EnumInfoLevelError,
 	},
 	"NeedsLogin": {
 		Short:   "needs login",
 		Details: "requires further action to log in",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	"NeedsMachineAuth": {
 		Short:   "needs login",
 		Details: "requires further action to authenticate/authorize the machine",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	"Stopped": {
 		Short: "stopped",
-		Level: "info",
+		Level: EnumInfoLevelInfo,
 	},
 	"Starting": {
 		Short: "starting",
-		Level: "info",
+		Level: EnumInfoLevelInfo,
 	},
 	"Running": {
 		Short: "running",
-		Level: "success",
+		Level: EnumInfoLevelSuccess,
 	},
 }
 
@@ -158,4 +154,9 @@ type EnumInfo struct {
 	Level   string
 }
 
-const EnumInfoLevelError = "error"
+const (
+	EnumInfoLevelError   = "error"
+	EnumInfoLevelWarning = "warning"
+	EnumInfoLevelInfo    = "info"
+	EnumInfoLevelSuccess = "success"
+)

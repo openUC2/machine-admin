@@ -1,3 +1,4 @@
+//nolint:goconst // many constants here are taken from the NetworkManager docs
 package networkmanager
 
 import (
@@ -31,27 +32,27 @@ type ActiveConnState uint32
 var activeConnectionStateInfo = map[ActiveConnState]EnumInfo{
 	0: {
 		Short: "unknown",
-		Level: "warning",
+		Level: EnumInfoLevelWarning,
 	},
 	1: {
 		Short:   "activating",
 		Details: "network connection is being prepared",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	2: {
 		Short:   "activated",
 		Details: "there is a connection to the network",
-		Level:   "success",
+		Level:   EnumInfoLevelSuccess,
 	},
 	3: {
 		Short:   "deactivating",
 		Details: "network connection is being torn down and cleaned up",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	4: {
 		Short:   "deactivating",
 		Details: "network connection is disconnected and will be removed",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 }
 

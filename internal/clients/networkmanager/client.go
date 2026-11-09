@@ -1,4 +1,6 @@
 // Package networkmanager provides an interface for NetworkManager via its D-Bus API.
+
+//nolint:goconst // many constants here are taken from the NetworkManager docs
 package networkmanager
 
 import (
@@ -61,42 +63,42 @@ var networkManagerState = map[NetworkManagerState]EnumInfo{
 	0: {
 		Short:   "unknown",
 		Details: "NetworkManager daemon error makes it unable to reasonably assess state",
-		Level:   "error",
+		Level:   EnumInfoLevelError,
 	},
 	10: {
 		Short:   "disabled",
 		Details: "NetworkManager is disabled",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	20: {
 		Short:   "disconnected",
 		Details: "no active network connection",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	30: {
 		Short:   "disconnecting",
 		Details: "network connections are being cleaned up",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	40: {
 		Short:   "connecting",
 		Details: "network connection is being started",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	50: {
 		Short:   "locally connected",
 		Details: "no default route to access the internet",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	60: {
 		Short:   "site-wide connected",
 		Details: "default route is available, but internet connectivity check didn't succeed",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	70: {
 		Short:   "globally connected",
 		Details: "internet connectivity check succeeded",
-		Level:   "success",
+		Level:   EnumInfoLevelSuccess,
 	},
 }
 
@@ -118,27 +120,27 @@ var networkManagerConnectivity = map[NetworkManagerConnectivity]EnumInfo{
 	0: {
 		Short:   "unknown",
 		Details: "connectivity checks are disabled or have not yet been run",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	1: {
 		Short:   "none",
 		Details: "not connected to any network",
-		Level:   "warning",
+		Level:   EnumInfoLevelWarning,
 	},
 	2: {
 		Short:   "portal",
 		Details: "internet connection is hijacked by a captive portal gateway",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	3: {
 		Short:   "limited",
 		Details: "connected to a network, unable to reach full internet; no captive portal detected",
-		Level:   "info",
+		Level:   EnumInfoLevelInfo,
 	},
 	4: {
 		Short:   "full",
 		Details: "connected to network and able to reach full internet",
-		Level:   "success",
+		Level:   EnumInfoLevelSuccess,
 	},
 }
 
